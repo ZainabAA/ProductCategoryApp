@@ -1,0 +1,58 @@
+﻿@model IEnumerable<Category>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<form asp-controller="Categories" asp-action="Index">
+    <p>
+        <label>Category Name: <input type="text" name="SearchString"/></label>
+        <input type="submit" value="Filter" />
+    </p>
+</form>
+@if (Model.Any())
+{
+    <a asp-action="Create" class="btn btn-primary">Create Category</a>
+
+
+    <table class="table table-bordered">
+        <tr>
+            <td>
+                @Html.DisplayNameFor(x => x.Name)
+            </td>
+            <td>Operations</td>
+        </tr>
+
+        @foreach (var emp in Model)
+        {
+            <tr>
+                <td>@emp.Name</td>
+                <td>
+                    <a asp-action="Details"
+                       asp-route-id="@emp.Id"
+                       class="btn btn-secondary"> More Details </a>
+
+                    <a asp-action="Edit"
+                       asp-route-id="@emp.Id"
+                       class="btn btn-warning"> Edit </a>
+
+                    <a asp-action="Delete"
+                       asp-route-id="@emp.Id"
+                       class="btn btn-danger"> Remove </a>
+                </td>
+            </tr>
+        }
+
+    </table>
+
+}
+else
+{
+    <div class="alert alert-warning">
+        No categories in this list,
+        <a asp-action="Create" class="btn btn-primary">Create</a>
+    </div>
+
+}
+

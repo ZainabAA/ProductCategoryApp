@@ -1,0 +1,25 @@
+﻿@model Category
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<form asp-action="Edit" method="post">
+    @Html.HiddenFor(x => x.Id)
+    <table class="table table-bordered">
+        <tr>
+            <td> <label asp-for="Name"></label>
+            <td>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <input type="submit" value="Save" class="btn btn-success" />
+                <a asp-action="Index" class="btn btn-primary">Cancel</a>
+            </td>
+        </tr>
+    </table>
+</form>

@@ -1,0 +1,30 @@
+﻿@model Product
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<table class="table table-bordered">
+
+    <tr>
+        <td>
+            <label asp-for="Name"></label>
+        </td>
+        <td> @Model.Name </td>
+    </tr>
+    <tr>
+        <td>
+            <label asp-for="Price"></label>
+        </td>
+        <td> @Model.Price </td>
+    </tr>
+
+    <tr>
+        <td>
+            <label asp-for="Category"></label>
+        </td>
+        <td> @Model.Category?.Name </td>
+    </tr>
+
+</table>
